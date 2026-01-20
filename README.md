@@ -1,4 +1,4 @@
-*Senticall – Voice & Text Sentiment Analytics (Main App + Report Generator)
+# Senticall – Voice & Text Sentiment Analytics (Main App + Report Generator)
 
 End-to-end customer call analytics pipeline:
 
@@ -210,4 +210,3 @@ Must include a `phone` column. Example columns:
 ## License
 
 Add your preferred license here (MIT / Apache-2.0 / proprietary).
-
