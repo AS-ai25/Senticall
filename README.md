@@ -1,4 +1,4 @@
-#Senticall – Voice & Text Sentiment Analytics (Main App + Report Generator)
+Senticall – Voice & Text Sentiment Analytics (Main App + Report Generator)
 
 End-to-end customer call analytics pipeline:
 
