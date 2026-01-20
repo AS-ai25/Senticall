@@ -198,15 +198,97 @@ Must include a `phone` column. Example columns:
 
 ---
 
-## Roadmap Ideas
+---
 
-* Add interactive filters (date range, demographic selector) in the dashboard
-* Add export buttons for merged datasets and chart images
-* Add per-call drill-down (select a Call ID and render full details)
-* Add caching for expensive computations (plots, AI summaries)
+## ⚠️ Important Notes – Sample Data vs. Your Own Calls
+
+### Using the **sample report (60 historical calls)**
+
+To generate a **ready-made example report** based on historical data:
+
+1. **You MUST download and place the following files in your Colab working directory**:
+
+   * `agent_results_60.json`
+   * `customer_demographics.csv`
+
+2. These files are used to demonstrate the full reporting pipeline with **~60 pre-existing calls**, including:
+
+   * Analytics dashboard
+   * AI executive summary
+   * Strategic recommendations
+   * PowerPoint report generation
+
+3. By default, `code_report.py` is configured to read:
+
+   ```python
+   json_path="agent_results_60.json"
+   ```
+
+This allows you to run the report **without running the main app first**.
 
 ---
 
-## License
+### Using **your own calls** (generated from `main.ipynb`)
+
+If you want to generate a report based on **your own analyzed calls**:
+
+1. Run **Part 1 (`main.ipynb`)** and generate calls normally
+   → this will create:
+
+   ```txt
+   agent_results.json
+   ```
+
+2. Open **`code_report.py`** and **change line 11**:
+
+   ```python
+   json_path="agent_results_60.json"
+   ```
+
+   ➜ change to:
+
+   ```python
+   json_path="agent_results.json"
+   ```
+
+3. ⚠️ **You MUST provide an updated `customer_demographics.csv`** that matches your new calls:
+
+   * The file **must exist**
+   * It **must include a `phone` column**
+   * Phone numbers must **match the phone values used in `main.ipynb`**
+   * Otherwise:
+
+     * The merge step will return zero rows
+     * The report will be empty or invalid
+
+---
+
+### 📄 `customer_demographics.csv` – Required Structure
+
+Minimum required columns:
+
+```csv
+phone,age,gender,incomeGroup,education
+```
+
+Example row:
+
+```csv
+123456789,42,Male,$100,000 to $124,999,Bachelor
+```
+
+If phone numbers do not align exactly (format, spacing, missing rows), the report **cannot be generated correctly**.
+
+---
+
+### Summary
+
+| Scenario              | Required JSON           | Required Demographics          |
+| --------------------- | ----------------------- | ------------------------------ |
+| Demo / example report | `agent_results_60.json` | Provided sample CSV            |
+| Your own calls        | `agent_results.json`    | **You must create/update CSV** |
+
+---
+
 
 Add your preferred license here (MIT / Apache-2.0 / proprietary).
